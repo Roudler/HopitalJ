@@ -3,10 +3,10 @@ package jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
-import dao.IDAOClient;
+import dao.IDAOCompte;
 import metier.Compte;
-import model.Client;
 import util.Context;
 
 public class DAOCompte implements IDAOCompte{
@@ -23,8 +23,10 @@ public class DAOCompte implements IDAOCompte{
 
 	@Override
 	public List<Compte> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		List<Compte> comptes = em.createQuery("select c from Compte c", Compte.class).getResultList();
+		em.close();
+		return comptes;
 	}
 
 	@Override
@@ -50,6 +52,12 @@ public class DAOCompte implements IDAOCompte{
 		em.getTransaction().commit();
 		em.close();
 		
+	}
+
+	@Override
+	public Compte checkConnect(String log, String pass) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -3,6 +3,9 @@ package jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
+import dao.IDAOPatient;
+import metier.Compte;
 import metier.Patient;
 import util.Context;
 
@@ -18,8 +21,10 @@ public class DAOPatient implements IDAOPatient{
 
 	@Override
 	public List<Patient> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		List<Patient> patients = em.createQuery("select p from Patient p", Patient.class).getResultList();
+		em.close();
+		return patients;
 	}
 
 	@Override

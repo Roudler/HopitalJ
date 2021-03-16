@@ -22,8 +22,10 @@ public class DAOVisite implements IDAOVisite{
 
 	@Override
 	public List<Visite> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		List<Visite> visites = em.createQuery("select v from Visite v", Visite.class).getResultList();
+		em.close();
+		return visites;
 	}
 
 
