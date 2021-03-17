@@ -129,7 +129,7 @@ public class App {
 			String ville = saisieString("Saisir votre ville");
 
 			p=new Patient(secu,nom,prenom,tel,new Adresse(numero,voie,cp,ville));	 
-			Hopital.get_instance().getDaoP().insert(p);
+			Hopital.get_instance().getDaoP().save(p);
 		}
 		Hopital.get_instance().getFileAttente().add(p);
 	}
@@ -198,7 +198,7 @@ public class App {
 
 			for(Visite v : visites) 
 			{
-				Hopital.get_instance().getDaoV().insert(v);
+				Hopital.get_instance().getDaoV().save(v);
 			}
 
 			System.out.println("La liste est save");	
