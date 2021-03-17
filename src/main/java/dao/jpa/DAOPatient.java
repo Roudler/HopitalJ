@@ -1,65 +1,57 @@
-package jpa;
+package dao.jpa;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import dao.IDAOVisite;
-import metier.Visite;
+import dao.IDAOPatient;
+import metier.Compte;
+import metier.Patient;
 import util.Context;
 
-
-
-public class DAOVisite implements IDAOVisite{
+public class DAOPatient implements IDAOPatient{
 
 	@Override
-	public Visite findById(Integer id) {
+	public Patient findById(Integer id) {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		Visite visite = em.find(Visite.class, id);
+		Patient patient = em.find(Patient.class, id);
 		em.close();
-		return visite;
+		return patient;
 	}
 
 	@Override
-	public List<Visite> findAll() {
+	public List<Patient> findAll() {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		List<Visite> visites = em.createQuery("select v from Visite v", Visite.class).getResultList();
+		List<Patient> patients = em.createQuery("select p from Patient p", Patient.class).getResultList();
 		em.close();
-		return visites;
+		return patients;
 	}
 
-
 	@Override
-	public void delete(Visite visite) {
+	public Patient save(Patient patient) {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
 		
-		visite=em.merge(visite);
-		em.remove(visite);
+		patient=em.merge(patient);
+		
+		em.getTransaction().commit();
+		em.close();
+		return patient;
+	}
+
+	@Override
+	public void delete(Patient patient) {
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		
+		patient=em.merge(patient);
+		em.remove(patient);
 		
 		em.getTransaction().commit();
 		em.close();
 		
-	}
-
-	@Override
-	public Visite save(Visite visite) {
-		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		em.getTransaction().begin();
-		
-		visite=em.merge(visite);
-		
-		em.getTransaction().commit();
-		em.close();
-		return visite;
-	}
-
-
-	@Override
-	public List<Visite> selectAllByPatient(int secu) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	
+
 }

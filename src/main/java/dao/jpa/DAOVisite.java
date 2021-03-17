@@ -1,53 +1,41 @@
-package jpa;
+package dao.jpa;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
-import dao.IDAOCompte;
-import metier.Compte;
+import dao.IDAOVisite;
+import metier.Visite;
 import util.Context;
 
-public class DAOCompte implements IDAOCompte{
 
-	
+
+public class DAOVisite implements IDAOVisite{
 
 	@Override
-	public Compte findById(Integer id) {
+	public Visite findById(Integer id) {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		Compte compte = em.find(Compte.class, id);
+		Visite visite = em.find(Visite.class, id);
 		em.close();
-		return compte;
+		return visite;
 	}
 
 	@Override
-	public List<Compte> findAll() {
+	public List<Visite> findAll() {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		List<Compte> comptes = em.createQuery("select c from Compte c", Compte.class).getResultList();
+		List<Visite> visites = em.createQuery("select v from Visite v", Visite.class).getResultList();
 		em.close();
-		return comptes;
+		return visites;
 	}
 
+
 	@Override
-	public Compte save(Compte compte) {
+	public void delete(Visite visite) {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
 		em.getTransaction().begin();
 		
-		compte=em.merge(compte);
-		
-		em.getTransaction().commit();
-		em.close();
-		return compte;
-	}
-
-	@Override
-	public void delete(Compte compte) {
-		EntityManager em = Context.getInstance().getEmf().createEntityManager();
-		em.getTransaction().begin();
-		
-		compte=em.merge(compte);
-		em.remove(compte);
+		visite=em.merge(visite);
+		em.remove(visite);
 		
 		em.getTransaction().commit();
 		em.close();
@@ -55,9 +43,23 @@ public class DAOCompte implements IDAOCompte{
 	}
 
 	@Override
-	public Compte checkConnect(String log, String pass) {
+	public Visite save(Visite visite) {
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		em.getTransaction().begin();
+		
+		visite=em.merge(visite);
+		
+		em.getTransaction().commit();
+		em.close();
+		return visite;
+	}
+
+
+	@Override
+	public List<Visite> selectAllByPatient(int secu) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 }
