@@ -1,14 +1,14 @@
-package src.main.java.util;
+package util;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dao.jpa.DAOCompte;
-import dao.jpa.DAOPatient;
-import dao.jpa.DAOVisite;
-import src.main.java.dao.IDAOCompte;
-import src.main.java.dao.IDAOPatient;
-import src.main.java.dao.IDAOVisite;
+import dao.IDAOCompte;
+import dao.IDAOPatient;
+import dao.IDAOVisite;
+import jpa.DAOCompte;
+import jpa.DAOPatient;
+import jpa.DAOVisite;
 
 public class Context {
 
