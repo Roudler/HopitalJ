@@ -3,10 +3,20 @@ package metier;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorValue("medecin")
+
 public class Medecin extends Compte {
 
-	private int salle;
-	private List<Visite> visites=new ArrayList();
+	private transient int salle;
+	
+	@OneToMany(mappedBy = "medecin", fetch = FetchType.EAGER)
+	private List<Visite> visites=new ArrayList<Visite>();
 
 	public Medecin() {
 	}

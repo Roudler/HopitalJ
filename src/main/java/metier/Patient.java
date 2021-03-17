@@ -2,11 +2,22 @@ package metier;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity
 public class Patient implements Serializable {
 
-	
+	@Id
+	@Column(name = "secu")
 	private int id;
-	private String nom,prenom,tel;
+	private String nom;
+	private String prenom;
+	private String tel;
+	@Embedded
 	private Adresse adresse;
 	
 	
@@ -16,6 +27,9 @@ public class Patient implements Serializable {
 		this.prenom = prenom;
 	}
 
+	public Patient() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Patient(int secu, String nom, String prenom, String tel, Adresse adresse) {
 		this.id = secu;
