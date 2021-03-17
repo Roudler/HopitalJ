@@ -91,7 +91,7 @@ public class DAOCompteJDBC implements IDAOCompte{
 	}
 
 
-
+/*
 	@Override
 	public void insert(Compte compte) {
 		try {
@@ -142,7 +142,7 @@ public class DAOCompteJDBC implements IDAOCompte{
 			e.printStackTrace();
 		}
 	}
-
+	*/
 	@Override
 	public void delete(Compte compte) {
 		try {
@@ -198,6 +198,14 @@ public class DAOCompteJDBC implements IDAOCompte{
 		}
 
 		return compte;
+	}
+
+
+
+	@Override
+	public Compte save(Compte d) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
