@@ -6,9 +6,9 @@ import javax.persistence.Persistence;
 import dao.IDAOCompte;
 import dao.IDAOPatient;
 import dao.IDAOVisite;
-import jpa.DAOCompte;
-import jpa.DAOPatient;
-import jpa.DAOVisite;
+import dao.jpa.DAOCompte;
+import dao.jpa.DAOPatient;
+import dao.jpa.DAOVisite;
 
 public class Context {
 
