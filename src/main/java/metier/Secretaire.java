@@ -1,5 +1,11 @@
 package metier;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("secretaire")
+
 public class Secretaire extends Compte{
 
 	public Secretaire() {

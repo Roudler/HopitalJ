@@ -2,6 +2,10 @@ package metier;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
+
+
+@Embeddable
 public class Adresse implements Serializable{
 
 	
@@ -16,6 +20,11 @@ public class Adresse implements Serializable{
 		this.voie = voie;
 		this.cp = cp;
 		this.ville = ville;
+	}
+	
+	public Adresse()
+	{
+		
 	}
 
 
