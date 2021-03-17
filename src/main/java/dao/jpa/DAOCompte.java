@@ -56,8 +56,13 @@ public class DAOCompte implements IDAOCompte{
 
 	@Override
 	public Compte checkConnect(String log, String pass) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = Context.getInstance().getEmf().createEntityManager();
+		Query q = em.createQuery("select c from Compte c where login = :log and password = :pass", Compte.class);
+		q.setParameter("log", log);
+		q.setParameter("pass", pass);
+		Compte compte = (Compte) q.getSingleResult();
+		em.close();
+		return compte;
 	}
 
 }

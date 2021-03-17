@@ -13,7 +13,7 @@ import dao.jpa.DAOVisite;
 public class Context {
 
 	
-	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("eshopJPA");
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("hopital");
 	private static Context _instance=null;
 	private IDAOCompte daoCompte = new DAOCompte();
 	private IDAOPatient daoPatient = new DAOPatient();

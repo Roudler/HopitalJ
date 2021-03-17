@@ -8,6 +8,9 @@ import dao.IDAOVisite;
 import dao.jdbc.DAOCompteJDBC;
 import dao.jdbc.DAOPatientJDBC;
 import dao.jdbc.DAOVisiteJDBC;
+import dao.jpa.DAOCompte;
+import dao.jpa.DAOPatient;
+import dao.jpa.DAOVisite;
 
 
 
@@ -16,9 +19,12 @@ public class Hopital {
 	private LinkedList<Patient> fileAttente=new LinkedList<Patient>();
 	private Patient lastPatient=null;
 	private Compte connected=null;
-	private IDAOCompte daoC = new DAOCompteJDBC();
-	private IDAOPatient daoP = new DAOPatientJDBC();
-	private IDAOVisite daoV = new DAOVisiteJDBC();
+//	private IDAOCompte daoC = new DAOCompteJDBC();
+//	private IDAOPatient daoP = new DAOPatientJDBC();
+//	private IDAOVisite daoV = new DAOVisiteJDBC();
+	private IDAOCompte daoC = new DAOCompte();
+	private IDAOPatient daoP = new DAOPatient();
+	private IDAOVisite daoV = new DAOVisite();
 	boolean pause=false;
 	
 	private static Hopital _instance=null; 
