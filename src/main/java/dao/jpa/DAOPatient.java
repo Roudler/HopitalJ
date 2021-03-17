@@ -18,7 +18,7 @@ public class DAOPatient implements IDAOPatient{
 		em.close();
 		return patient;
 	}
-
+//Mylene
 	@Override
 	public List<Patient> findAll() {
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
